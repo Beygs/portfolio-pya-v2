@@ -6,14 +6,15 @@
     cv: {
       image: string;
       pdf: string;
+      portfolio: string;
     }
   };
 
   console.log(data.cv)
 </script>
 
-<Link href="{PUBLIC_APIURL}/assets/{data.cv.pdf}">PDF</Link>
-<Link href="#">Portfolio</Link>
+<Link href="{PUBLIC_APIURL}/assets/{data.cv.pdf}" target="_blank">PDF</Link>
+<Link href="{PUBLIC_APIURL}/assets/{data.cv.portfolio}" target="_blank">Portfolio</Link>
 
 <img src="{PUBLIC_APIURL}/assets/{data.cv.image}" alt="cv">
 

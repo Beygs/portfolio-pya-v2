@@ -1,27 +1,68 @@
-<script>
+<script lang="ts">
 	import { PUBLIC_APIURL } from '$env/static/public';
+	import { ssrExportAllKey } from 'vite/module-runner';
 
-  export let data;
+	export let data;
 
-  const { project } = data;
+	const { project } = data;
 
-  console.log(project);
-  
+	let modalImg = 'https://admin.pya-gilles.fr/assets/ae3581f1-4fb4-4273-b329-224ef9ac818c';
+	let showModal = false;
+
+	const handleClick = (image: string) => {
+		modalImg = `${PUBLIC_APIURL}/assets/${image}`;
+		showModal = true;
+	};
+
+	const exitModal = () => {
+		showModal = false;
+	};
 </script>
+
+<div class={[showModal && 'active']}>
+	<button class="blocker" on:click={exitModal} title="exit modal"></button>
+	<button on:click={exitModal} title="exit modal">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="800px"
+			height="800px"
+			viewBox="0 0 24 24"
+			fill="none"
+			class="cross"
+		>
+			<path
+				d="M 20 20L4 4.00003M20 4L4.00002 20"
+				stroke="#ffffffaa"
+				stroke-width="2"
+				stroke-linecap="round"
+			/>
+		</svg>
+	</button>
+	<div class="modal">
+		<img src={modalImg} alt="" />
+	</div>
+</div>
 
 <h2 class="title">{project.title}</h2>
 
 <p class="creation">{project.creation}</p>
 
 <ul class="images">
-  <li>
-    <img src="{PUBLIC_APIURL}/assets/{project.miniature}" alt="{project.title} illustration 1">
-  </li>
-  {#each project.images as image, i}
-    <li>
-      <img src="{PUBLIC_APIURL}/assets/{image.directus_files_id}" alt="{project.title} illustration {i + 2}">
-    </li>
-  {/each}
+	<li>
+		<button on:click={() => handleClick(project.miniature)}>
+			<img src="{PUBLIC_APIURL}/assets/{project.miniature}" alt="{project.title} illustration 1" />
+		</button>
+	</li>
+	{#each project.images as image, i}
+		<li>
+			<button on:click={() => handleClick(image.directus_files_id)}>
+				<img
+					src="{PUBLIC_APIURL}/assets/{image.directus_files_id}"
+					alt="{project.title} illustration {i + 2}"
+				/>
+			</button>
+		</li>
+	{/each}
 </ul>
 
 <p class="techniques">{project.techniques}</p>
@@ -29,40 +70,141 @@
 <p class="dimensions">{project.dimensions}</p>
 
 {#if project.credits}
-  <h3>Crédits</h3>
+	<h3>Crédits</h3>
 
-  <p class="credits">{@html project.credits}</p>
+	<p class="credits">{@html project.credits}</p>
 {/if}
 
-<style>
-  * {
-    text-align: center;
-    text-transform: uppercase;
-  }
+<style lang="scss">
+	* {
+		text-align: center;
+		text-transform: uppercase;
+	}
 
-  h2, h3 {
-    font-weight: bold;
-  }
+	h2,
+	h3 {
+		font-weight: bold;
+	}
 
-  .title, .creation, .dimensions, .images {
-    margin-bottom: 3rem;
-  }
+	.title,
+	.creation,
+	.dimensions,
+	.images {
+		margin-bottom: 3rem;
+	}
 
-  .images {
-    list-style: none;
-  }
+	.images {
+		list-style: none;
+	}
 
-  .credits {
-    margin-bottom: 9rem;
-    text-transform: none;
-  }
+	.credits {
+		margin-bottom: 9rem;
+		text-transform: none;
+	}
 
-  .images {
-    column-count: 2;
-    column-gap: 1rem;
-  }
+	.images {
+		column-count: 2;
+		column-gap: 1rem;
+	}
 
-  .images img {
-    margin-bottom: 1rem;
-  }
+	.images img {
+		margin-bottom: 1rem;
+	}
+
+	.images button {
+		position: relative;
+		z-index: 0;
+
+		&::after {
+			content: '';
+			position: absolute;
+			background: var(--accent);
+			pointer-events: none;
+			opacity: 0;
+			top: 1rem;
+			left: 1rem;
+			right: 1rem;
+			bottom: 2rem;
+			transition: opacity 0.2s ease;
+      filter: blur(15px);
+		}
+
+		&:hover {
+			&::after {
+				opacity: 0.05;
+			}
+		}
+	}
+
+	button {
+		all: unset;
+		display: block;
+		width: 100%;
+		cursor: pointer;
+	}
+
+	.blocker {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.8);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.active {
+		.blocker {
+			opacity: 1;
+			pointer-events: all;
+		}
+
+		.modal {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 1;
+		}
+
+		.cross {
+			opacity: 1;
+		}
+	}
+
+	.cross {
+		position: fixed;
+		width: 2rem;
+		height: 2rem;
+		right: 1rem;
+		top: 1rem;
+		cursor: pointer;
+		opacity: 0;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.modal {
+		position: fixed;
+		height: 70vh;
+		width: auto;
+		top: 50%;
+		left: 50%;
+		transition: transform 0.5s ease;
+		transform: translate(-50%, -50%) scale(0.9);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 1;
+
+    img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+	}
+
+	.blocker,
+	.cross,
+	.modal {
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
 </style>

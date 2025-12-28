@@ -1,9 +1,9 @@
 <script>
 	import { page } from '$app/state';
-	let { href, children } = $props();
+	let { href, target = "", rel = "", children } = $props();
 </script>
 
-<a {href} class={`${page.url.pathname}` === href ? 'active' : ''}>{@render children()}</a>
+<a {href} {target} {rel} class={`${page.url.pathname}` === href ? 'active' : ''}>{@render children()}</a>
 
 <style>
 	a {

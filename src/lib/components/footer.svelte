@@ -9,7 +9,7 @@
 				<Link href="mailto:pyagilles04@gmail.com">pyagilles04@gmail.com</Link>
 			</li>
 			<li>
-				<Link href="https://www.instagram.com/pyagilles_">pyagilles_</Link>
+				<Link href="https://www.instagram.com/pyagilles_" target="_blank" rel="noopener noreferrer">pyagilles_</Link>
 			</li>
 		</ul>
 	</nav>
