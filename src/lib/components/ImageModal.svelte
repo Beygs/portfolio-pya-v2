@@ -18,16 +18,19 @@
 <style>
 	.image-modal {
 		width: 100%;
-		height: fit-content;
-		position: relative;
+    height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+    
+    img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
 	}
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		display: block;
-	}
 
 	.spinner {
 		position: absolute;

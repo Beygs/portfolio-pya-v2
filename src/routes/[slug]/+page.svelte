@@ -15,13 +15,13 @@
 		modalImg = `${PUBLIC_APIURL}/assets/${image}`;
 		showModal = true;
 
-		document.body.style = "overflow: hidden";
+		document.body.style = 'overflow: hidden';
 	};
 
 	const exitModal = () => {
 		showModal = false;
 
-		document.body.style = "overflow: auto";
+		document.body.style = 'overflow: auto';
 	};
 </script>
 
@@ -194,8 +194,6 @@
 
 	.modal {
 		position: fixed;
-		height: 70vh;
-		width: auto;
 		top: 50%;
 		left: 50%;
 		transition: transform 0.5s ease;
@@ -203,15 +201,6 @@
 		opacity: 0;
 		pointer-events: none;
 		z-index: 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		:global(img) {
-			height: 100%;
-			width: auto;
-			object-fit: contain;
-		}
 	}
 
 	.blocker,
