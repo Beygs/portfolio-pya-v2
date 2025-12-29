@@ -18,7 +18,7 @@
 <style>
 	.image-modal {
 		width: 100%;
-		height: 100%;
+		height: fit-content;
 		position: relative;
 	}
 

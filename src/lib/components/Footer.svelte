@@ -47,4 +47,8 @@
     font-style: normal;
     color: var(--accent);
   }
+
+	p {
+		text-align: center;
+	}
 </style>

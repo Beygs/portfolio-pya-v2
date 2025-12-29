@@ -10,7 +10,13 @@ body {
   padding: 2rem 7rem;
 }
 
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 730px) {
+  body {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
   body {
     padding: 1rem;
   }

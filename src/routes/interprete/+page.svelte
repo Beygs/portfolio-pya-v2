@@ -15,4 +15,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  @media screen and (max-width: 500px) {
+    .grid {
+      display: block;
+    }
+  }
 </style>

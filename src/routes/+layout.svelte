@@ -37,4 +37,10 @@
 	main {
 		margin-bottom: 5rem;
 	}
+
+	@media screen and (max-width: 950px) {
+		main {
+			margin-bottom: 3rem;
+		}
+	}
 </style>

@@ -1,20 +1,30 @@
 <script>
 	import { page } from '$app/state';
-	let { href, target = "", rel = "", children } = $props();
+	let { href = undefined, target = '', rel = '', children, dispatch = undefined } = $props();
 </script>
 
-<a {href} {target} {rel} class={`${page.url.pathname}` === href ? 'active' : ''}>{@render children()}</a>
+{#if !href}
+	<button onclick={() => dispatch && dispatch()}>
+		{@render children()}
+	</button>
+{:else}
+	<a {href} {target} {rel} class={`${page.url.pathname}` === href ? 'active' : ''} onclick={() => dispatch && dispatch()}>
+		{@render children()}
+	</a>
+{/if}
 
 <style>
-	a {
+	a, button {
 		color: var(--dark);
+		background: var(--light);
 		text-align: center;
 		border: 1px solid var(--dark);
+		min-width: fit-content;
 		width: 100%;
 		height: 100%;
 		min-height: 3rem;
-		transition: 0.2s ease;
-    padding: 0 1rem;
+		transition: all 0.2s ease;
+		padding: 0 1rem;
 
 		&:hover {
 			color: var(--light);
@@ -25,8 +35,8 @@
 	.active {
 		color: var(--light);
 		background: var(--accent);
-    border-color: var(--accent);
-    pointer-events: none;
-    cursor: default;
+		border-color: var(--accent);
+		pointer-events: none;
+		cursor: default;
 	}
 </style>

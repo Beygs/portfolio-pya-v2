@@ -105,7 +105,6 @@
 	}
 
 	.credits {
-		margin-bottom: 9rem;
 		text-transform: none;
 	}
 
@@ -200,6 +199,9 @@
 		opacity: 0;
 		pointer-events: none;
 		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		:global(img) {
 			height: 100%;
@@ -213,5 +215,20 @@
 	.modal {
 		opacity: 0;
 		transition: opacity 0.2s ease;
+	}
+
+	@media screen and (max-width: 950px) {
+		.title,
+		.creation,
+		.dimensions,
+		.images {
+			margin-bottom: 1rem;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.images {
+			column-count: 1;
+		}
 	}
 </style>
