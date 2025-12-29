@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_APIURL } from '$env/static/public';
+	import Image from '$lib/components/Image.svelte';
+	import ImageModal from '$lib/components/ImageModal.svelte';
 	import { ssrExportAllKey } from 'vite/module-runner';
 
 	export let data;
@@ -39,7 +41,9 @@
 		</svg>
 	</button>
 	<div class="modal">
-		<img src={modalImg} alt="" />
+		{#key modalImg}
+			<ImageModal src={modalImg} />
+		{/key}
 	</div>
 </div>
 
@@ -50,13 +54,16 @@
 <ul class="images">
 	<li>
 		<button on:click={() => handleClick(project.miniature)}>
-			<img src="{PUBLIC_APIURL}/assets/{project.miniature}" alt="{project.title} illustration 1" />
+			<Image
+				src="{PUBLIC_APIURL}/assets/{project.miniature}"
+				alt="{project.title} illustration 1"
+			/>
 		</button>
 	</li>
 	{#each project.images as image, i}
 		<li>
 			<button on:click={() => handleClick(image.directus_files_id)}>
-				<img
+				<Image
 					src="{PUBLIC_APIURL}/assets/{image.directus_files_id}"
 					alt="{project.title} illustration {i + 2}"
 				/>
@@ -105,10 +112,10 @@
 	.images {
 		column-count: 2;
 		column-gap: 1rem;
-	}
 
-	.images img {
-		margin-bottom: 1rem;
+		:global(img) {
+			margin-bottom: 1rem;
+		}
 	}
 
 	.images button {
@@ -126,7 +133,7 @@
 			right: 1rem;
 			bottom: 2rem;
 			transition: opacity 0.2s ease;
-      filter: blur(15px);
+			filter: blur(15px);
 		}
 
 		&:hover {
@@ -194,11 +201,11 @@
 		pointer-events: none;
 		z-index: 1;
 
-    img {
-      height: 100%;
-      width: auto;
-      object-fit: contain;
-    }
+		:global(img) {
+			height: 100%;
+			width: auto;
+			object-fit: contain;
+		}
 	}
 
 	.blocker,

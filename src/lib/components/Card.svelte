@@ -1,5 +1,6 @@
 <script>
 	import { PUBLIC_APIURL } from "$env/static/public";
+	import Image from "./Image.svelte";
 
   let { title, miniature, slug } = $props();
 </script>
@@ -7,7 +8,7 @@
 <div class="card">
   <a href="/{slug}">
     <div class="miniature">
-      <img src="{PUBLIC_APIURL}/assets/{miniature}" alt="{title} miniature">
+      <Image src="{PUBLIC_APIURL}/assets/{miniature}" alt="{title} miniature" />
     </div>
     <p>{title}</p>
   </a>
@@ -16,10 +17,13 @@
 <style>
   .card {
     margin-bottom: 2rem;
+    width: 100%;
 
     &:hover {
-      .miniature img {
-        transform: scale(1.1);
+      .miniature {
+        :global(img) {
+          transform: scale(1.1);
+        }
       }
     }
   }
@@ -34,7 +38,7 @@
     margin-bottom: 0.5rem;
     overflow: hidden;
 
-    img {
+    :global(img) {
       aspect-ratio: 4/3;
       object-fit: cover;
       transition: 0.5s ease;
