@@ -1,7 +1,7 @@
 @use "sass:color";
 @font-face {
-  font-family: "Avenir Book";
-  src: url("/fonts/Avenir_Book.ttf") format("truetype");
+	font-family: "Avenir Book";
+	src: url("/fonts/Avenir_Book.ttf") format("truetype");
 }
 
 $dark: hsl(10, 5%, 10%);
@@ -19,8 +19,8 @@ $font-weight-heading: 400;
 $color-heading: $dark;
 
 :root {
-  --dark: #{$dark};
-  --light: #{$light};
-  --grey: #{$grey};
-  --accent: #{$accent};
+	--dark: #{$dark};
+	--light: #{$light};
+	--grey: #{$grey};
+	--accent: #{$accent};
 }

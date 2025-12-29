@@ -1,6 +1,13 @@
 <script>
-	import { page } from '$app/state';
-	let { href = undefined, target = '', rel = '', children, dispatch = undefined, classlist = [] } = $props();
+	import { page } from "$app/state";
+	let {
+		href = undefined,
+		target = "",
+		rel = "",
+		children,
+		dispatch = undefined,
+		classlist = []
+	} = $props();
 </script>
 
 {#if !href}

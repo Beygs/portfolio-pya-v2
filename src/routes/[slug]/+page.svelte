@@ -1,31 +1,31 @@
 <script lang="ts">
-	import { PUBLIC_APIURL } from '$env/static/public';
-	import Image from '$lib/components/Image.svelte';
-	import ImageModal from '$lib/components/ImageModal.svelte';
-	import { ssrExportAllKey } from 'vite/module-runner';
+	import { PUBLIC_APIURL } from "$env/static/public";
+	import Image from "$lib/components/Image.svelte";
+	import ImageModal from "$lib/components/ImageModal.svelte";
+	import { ssrExportAllKey } from "vite/module-runner";
 
 	export let data;
 
 	const { project } = data;
 
-	let modalImg = 'https://admin.pya-gilles.fr/assets/ae3581f1-4fb4-4273-b329-224ef9ac818c';
+	let modalImg = "https://admin.pya-gilles.fr/assets/ae3581f1-4fb4-4273-b329-224ef9ac818c";
 	let showModal = false;
 
 	const handleClick = (image: string) => {
 		modalImg = `${PUBLIC_APIURL}/assets/${image}`;
 		showModal = true;
 
-		document.body.style = 'overflow: hidden';
+		document.body.style = "overflow: hidden";
 	};
 
 	const exitModal = () => {
 		showModal = false;
 
-		document.body.style = 'overflow: auto';
+		document.body.style = "overflow: auto";
 	};
 </script>
 
-<div class={[showModal && 'active']}>
+<div class={[showModal && "active"]}>
 	<button class="blocker" on:click={exitModal} title="exit modal"></button>
 	<button on:click={exitModal} title="exit modal">
 		<svg
@@ -126,7 +126,7 @@
 		z-index: 0;
 
 		&::after {
-			content: '';
+			content: "";
 			position: absolute;
 			background: var(--accent);
 			pointer-events: none;

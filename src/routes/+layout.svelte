@@ -6,9 +6,7 @@
 	let { children } = $props();
 </script>
 
-<a href="#main" class="skip-link">
-	Aller au contenu
-</a>
+<a href="#main" class="skip-link"> Aller au contenu </a>
 
 <Header />
 

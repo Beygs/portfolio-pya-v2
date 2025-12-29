@@ -1,6 +1,6 @@
 <script>
-	import { page } from '$app/state';
-	import Link from './Link.svelte';
+	import { page } from "$app/state";
+	import Link from "./Link.svelte";
 
 	let mobileMenuActive = $state(false);
 </script>
@@ -14,22 +14,25 @@
 	<nav class="nav">
 		<ul>
 			<li class="mobile-menu">
-				<Link dispatch={() => (mobileMenuActive = !mobileMenuActive)} classlist={[mobileMenuActive && "inversed"]}>Menu</Link>
+				<Link
+					dispatch={() => (mobileMenuActive = !mobileMenuActive)}
+					classlist={[mobileMenuActive && "inversed"]}>Menu</Link
+				>
 			</li>
 			<li
-				class={['nav-link', (mobileMenuActive || page.url.pathname === '/documents') && 'active']}
+				class={["nav-link", (mobileMenuActive || page.url.pathname === "/documents") && "active"]}
 			>
 				<Link href="/documents" dispatch={() => (mobileMenuActive = false)}
 					>Documents d'archives semestrielles sous influence textuelle.</Link
 				>
 			</li>
-			<li class={['nav-link', (mobileMenuActive || page.url.pathname === '/cv') && 'active']}>
+			<li class={["nav-link", (mobileMenuActive || page.url.pathname === "/cv") && "active"]}>
 				<Link href="/cv" dispatch={() => (mobileMenuActive = false)}>CV.</Link>
 			</li>
 			<li
 				class={[
-					'nav-link',
-					(mobileMenuActive || page.url.pathname === '/mention-marginale') && 'active'
+					"nav-link",
+					(mobileMenuActive || page.url.pathname === "/mention-marginale") && "active"
 				]}
 			>
 				<Link href="/mention-marginale" dispatch={() => (mobileMenuActive = false)}
@@ -37,7 +40,7 @@
 				>
 			</li>
 			<li
-				class={['nav-link', (mobileMenuActive || page.url.pathname === '/interprete') && 'active']}
+				class={["nav-link", (mobileMenuActive || page.url.pathname === "/interprete") && "active"]}
 			>
 				<Link href="/interprete" dispatch={() => (mobileMenuActive = false)}>Interprète.</Link>
 			</li>

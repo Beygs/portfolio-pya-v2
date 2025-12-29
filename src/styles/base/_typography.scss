@@ -1,14 +1,14 @@
 @use "../abstracts/variables";
 
 html {
-  font-size: variables.$font-size-base;
-  font-family: variables.$font-family-base;
-  color: variables.$color-base;
-  background-color: variables.$color-bg;
-  letter-spacing: 0.05ch;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(variables.$color-base, 0.2);
+	font-size: variables.$font-size-base;
+	font-family: variables.$font-family-base;
+	color: variables.$color-base;
+	background-color: variables.$color-bg;
+	letter-spacing: 0.05ch;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(variables.$color-base, 0.2);
 }
 
 h1,
@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: variables.$font-family-heading;
-  font-weight: variables.$font-weight-heading;
-  color: variables.$color-heading;
+	font-family: variables.$font-family-heading;
+	font-weight: variables.$font-weight-heading;
+	color: variables.$color-heading;
 }

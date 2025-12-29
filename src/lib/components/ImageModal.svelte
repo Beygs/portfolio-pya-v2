@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { src, alt = '' } = $props();
+	let { src, alt = "" } = $props();
 
 	let loaded = $state(false);
 </script>
@@ -18,19 +18,18 @@
 <style>
 	.image-modal {
 		width: 100%;
-    height: 100%;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-    
-    img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      display: block;
-    }
-	}
 
+		img {
+			max-width: 90vw;
+			max-height: 90vh;
+			object-fit: contain;
+			display: block;
+		}
+	}
 
 	.spinner {
 		position: absolute;
