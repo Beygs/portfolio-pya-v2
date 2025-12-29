@@ -14,10 +14,14 @@
 	const handleClick = (image: string) => {
 		modalImg = `${PUBLIC_APIURL}/assets/${image}`;
 		showModal = true;
+
+		document.body.style = "overflow: hidden";
 	};
 
 	const exitModal = () => {
 		showModal = false;
+
+		document.body.style = "overflow: auto";
 	};
 </script>
 
