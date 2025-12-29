@@ -2,31 +2,44 @@
 	import { page } from '$app/state';
 	import Link from './Link.svelte';
 
-  let mobileMenuActive = $state(false);
+	let mobileMenuActive = $state(false);
 </script>
 
 <header>
 	<nav class="title">
-		<a href="/" aria-label="Retourner à l'accueil" onclick={() => mobileMenuActive = false}>
+		<a href="/" aria-label="Retourner à l'accueil" onclick={() => (mobileMenuActive = false)}>
 			<h1>Pya <span class="gilles">GILLES</span></h1>
 		</a>
 	</nav>
 	<nav class="nav">
-    <ul>
-      <li class="mobile-menu">
-        <Link dispatch={() => mobileMenuActive = !mobileMenuActive}>Menu</Link>
-      </li>
-      <li class={['nav-link', (mobileMenuActive || page.url.pathname === "/documents") && 'active']}>
-        <Link href="/documents" dispatch={() => mobileMenuActive = false}>Documents d'archives semestrielles sous influence textuelle.</Link>
+		<ul>
+			<li class="mobile-menu">
+				<Link dispatch={() => (mobileMenuActive = !mobileMenuActive)} classlist={[mobileMenuActive && "inversed"]}>Menu</Link>
 			</li>
-			<li class={['nav-link', (mobileMenuActive || page.url.pathname === "/cv") && 'active']}>
-        <Link href="/cv" dispatch={() => mobileMenuActive = false}>CV.</Link>
+			<li
+				class={['nav-link', (mobileMenuActive || page.url.pathname === '/documents') && 'active']}
+			>
+				<Link href="/documents" dispatch={() => (mobileMenuActive = false)}
+					>Documents d'archives semestrielles sous influence textuelle.</Link
+				>
 			</li>
-			<li class={['nav-link', (mobileMenuActive || page.url.pathname === "/mention-marginale") && 'active']}>
-        <Link href="/mention-marginale" dispatch={() => mobileMenuActive = false}>Mention Marginale&nbsp;:&nbsp;Néant</Link>
+			<li class={['nav-link', (mobileMenuActive || page.url.pathname === '/cv') && 'active']}>
+				<Link href="/cv" dispatch={() => (mobileMenuActive = false)}>CV.</Link>
 			</li>
-			<li class={['nav-link', (mobileMenuActive || page.url.pathname === "/interprete") && 'active']}>
-        <Link href="/interprete" dispatch={() => mobileMenuActive = false}>Interprète.</Link>
+			<li
+				class={[
+					'nav-link',
+					(mobileMenuActive || page.url.pathname === '/mention-marginale') && 'active'
+				]}
+			>
+				<Link href="/mention-marginale" dispatch={() => (mobileMenuActive = false)}
+					>Mention Marginale&nbsp;:&nbsp;Néant</Link
+				>
+			</li>
+			<li
+				class={['nav-link', (mobileMenuActive || page.url.pathname === '/interprete') && 'active']}
+			>
+				<Link href="/interprete" dispatch={() => (mobileMenuActive = false)}>Interprète.</Link>
 			</li>
 		</ul>
 	</nav>
@@ -50,7 +63,15 @@
 			transition: color 0.2s ease;
 		}
 
-		&:hover {
+		@media not all and (pointer: coarse) {
+			&:hover {
+				.gilles {
+					color: var(--accent);
+				}
+			}
+		}
+
+		&:active {
 			.gilles {
 				color: var(--accent);
 			}
@@ -96,43 +117,43 @@
 			width: 100%;
 			opacity: 0;
 			pointer-events: none;
-      transition: all 0.2s ease;
-      height: auto;
-      max-height: 0;
-      overflow: hidden;
+			transition: all 0.2s ease;
+			height: auto;
+			max-height: 0;
+			overflow: hidden;
 		}
 
 		.active {
-      max-height: fit-content;
+			max-height: fit-content;
 			opacity: 1;
 			pointer-events: all;
-      margin-top: 1rem;
+			margin-top: 1rem;
 		}
 
-    h1 {
-      font-size: 3rem;
-    }
-  
-    .title {
-      margin-bottom: 3rem;
-    }
-  
-    header {
-      margin-bottom: 2rem;
-    }
+		h1 {
+			font-size: 3rem;
+		}
+
+		.title {
+			margin-bottom: 3rem;
+		}
+
+		header {
+			margin-bottom: 2rem;
+		}
 	}
 
-  @media screen and (max-width: 350px) {
-    h1 {
-      font-size: 2rem;
-    }
+	@media screen and (max-width: 350px) {
+		h1 {
+			font-size: 2rem;
+		}
 
-    .title {
-      margin-bottom: 2rem;
-    }
+		.title {
+			margin-bottom: 2rem;
+		}
 
-    header {
-      margin-bottom: 1rem;
-    }
-  }
+		header {
+			margin-bottom: 1rem;
+		}
+	}
 </style>
