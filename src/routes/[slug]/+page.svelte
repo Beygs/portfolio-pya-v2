@@ -2,6 +2,7 @@
 	import { PUBLIC_APIURL } from "$env/static/public";
 	import Image from "$lib/components/Image.svelte";
 	import ImageModal from "$lib/components/ImageModal.svelte";
+	import Link from "$lib/components/Link.svelte";
 	import { ssrExportAllKey } from "vite/module-runner";
 
 	export let data;
@@ -86,6 +87,12 @@
 	<p class="credits">{@html project.credits}</p>
 {/if}
 
+<div class="container">
+	<div class="link">
+		<Link href="/references">Références</Link>
+	</div>
+</div>
+
 <style lang="scss">
 	* {
 		text-align: center;
@@ -144,6 +151,17 @@
 				opacity: 0.05;
 			}
 		}
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+	}
+
+	.link {
+		margin-top: 6rem;
+		width: calc(50% - 0.5rem);
+		text-transform: none;
 	}
 
 	button {
@@ -216,6 +234,11 @@
 		.dimensions,
 		.images {
 			margin-bottom: 1rem;
+		}
+
+		.link {
+			width: 100%;
+			margin-top: 4rem;
 		}
 	}
 

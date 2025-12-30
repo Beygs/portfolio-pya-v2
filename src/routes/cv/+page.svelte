@@ -10,8 +10,6 @@
 			portfolio: string;
 		};
 	};
-
-	console.log(data.cv);
 </script>
 
 <Link href="{PUBLIC_APIURL}/assets/{data.cv.pdf}" target="_blank">PDF</Link>

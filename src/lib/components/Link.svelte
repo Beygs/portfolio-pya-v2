@@ -29,6 +29,7 @@
 <style>
 	a,
 	button {
+		display: block;
 		color: var(--dark);
 		background: var(--light);
 		text-align: center;
