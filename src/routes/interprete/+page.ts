@@ -6,7 +6,7 @@ export async function load({ fetch }) {
 
 	try {
 		const projects = await directus.request(
-			readItems("projects", { filter: { status: "published", interprete: "true" } })
+			readItems("projects", { filter: { status: "published", interprete: "true" }, sort: "index" })
 		);
 
 		return {
