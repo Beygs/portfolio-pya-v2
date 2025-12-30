@@ -12,15 +12,29 @@
 	};
 </script>
 
-<Link href="{PUBLIC_APIURL}/assets/{data.cv.pdf}" target="_blank">PDF</Link>
-<Link href="{PUBLIC_APIURL}/assets/{data.cv.portfolio}" target="_blank">Portfolio</Link>
-
-<div class="img">
-	<Image src="{PUBLIC_APIURL}/assets/{data.cv.image}" alt="cv" />
+<div class="link">
+	<Link href="{PUBLIC_APIURL}/assets/{data.cv.portfolio}/portfolio-pya-gilles.pdf" target="_blank"
+		>Portfolio</Link
+	>
 </div>
 
+<a class="img" href="{PUBLIC_APIURL}/assets/{data.cv.pdf}/cv-pya-gilles.pdf" target="_blank">
+	<Image src="{PUBLIC_APIURL}/assets/{data.cv.image}" alt="cv" />
+</a>
+
 <style>
+	.link {
+		width: calc(50% - 0.5rem);
+		margin-bottom: 3rem;
+	}
+
 	.img {
 		margin-top: 1rem;
+	}
+
+	@media screen and (max-width: 950px) {
+		.link {
+			width: 100%;
+		}
 	}
 </style>
