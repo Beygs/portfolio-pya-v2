@@ -13,9 +13,9 @@
 </script>
 
 <div class="link">
-	<Link href="{PUBLIC_APIURL}/assets/{data.cv.portfolio}/portfolio-pya-gilles.pdf" target="_blank"
-		>Portfolio</Link
-	>
+	<Link href="{PUBLIC_APIURL}/assets/{data.cv.portfolio}/portfolio-pya-gilles.pdf" target="_blank">
+		Portfolio
+	</Link>
 </div>
 
 <a class="img" href="{PUBLIC_APIURL}/assets/{data.cv.pdf}/cv-pya-gilles.pdf" target="_blank">
